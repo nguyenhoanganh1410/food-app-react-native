@@ -33,7 +33,7 @@ export default function StartScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.viewBody}>
-        <FlatList data={data} numColumns={2} renderItem={renderItem} />
+        <FlatList data={data} renderItem={renderItem} />
       </View>
     </View>
   );
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
   },
   viewBody: {
     backgroundColor: "#E3FAF4",
     height: 500,
+    //justifyContent: "center",
+    alignItems: "center",
   },
   image: {
     flex: 1,
