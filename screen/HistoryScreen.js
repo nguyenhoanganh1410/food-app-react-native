@@ -13,18 +13,21 @@ import {
 } from "react-native";
 import Items from "../component/ItemHistory";
 
-import tree from "../images/organicfood.png";
-import logo from "../images/logo.png";
-import shipper from "../images/shipper.png";
-import eatfood from "../images/eatfood.png";
+import cake1 from "../images/cake1.jpg";
+import cake2 from "../images/cake2.jpg";
+import cake3 from "../images/cake3.png";
+import cake4 from "../images/cake4.jpg";
+import cake5 from "../images/cake5.jpg";
+import cake6 from "../images/cake6.jpg";
 
 export default function StartScreen() {
   var data = [
-    { img: tree, title: " Samosas", price: 20, time: "yesterday" },
-    { img: tree, title: " Rogan Josh", price: 30, time: "2 days ago" },
-    { img: tree, title: " Tikka masala", price: 25, time: "2 days ago" },
-    { img: tree, title: " Tandoori", price: 10, time: "3 days ago" },
-    { img: tree, title: " Goulash", price: 15, time: "3 days ago" },
+    { img: cake1, title: " Samosas", price: 20, time: "yesterday" },
+    { img: cake2, title: " Rogan Josh", price: 30, time: "2 days ago" },
+    { img: cake3, title: " Tikka masala", price: 25, time: "2 days ago" },
+    { img: cake4, title: " Tandoori", price: 10, time: "3 days ago" },
+    { img: cake5, title: " Goulash", price: 15, time: "3 days ago" },
+    { img: cake6, title: " Goulash Tandeji", price: 22, time: "3 days ago" },
   ];
   // const [panel, setPanle] = useState(ArrayImg[0]);
   const [index, setIndex] = useState(1);
