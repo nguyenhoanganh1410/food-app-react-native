@@ -26,9 +26,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { categories, dataFood } from "../data/data";
 import CategoryCard from "../component/card/CategoryCard";
 import CardComponent from "../component/card/CardComponent";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CardFood from "../component/card/card/CardFood";
 import CardItem from "../component/card/card/CardItem";
+import Contex from "../store/Context";
 
 const Item = ({ title }) => (
   <View style={styles.item}>
@@ -36,6 +37,9 @@ const Item = ({ title }) => (
   </View>
 );
 export default function HomeScreen({ navigation }) {
+  const { state, depatch } = useContext(Contex);
+  const { cart } = state;
+
   const [listFood, setListFood] = useState([]);
   const renderItem = ({ item }) => <CategoryCard item={item} />;
   const renderCard = ({ item }) => (
@@ -97,7 +101,9 @@ export default function HomeScreen({ navigation }) {
                   shadowRadius: 3,
                 }}
               >
-                <Text style={{ fontSize: 12, color: "white" }}>2</Text>
+                <Text style={{ fontSize: 12, color: "white" }}>
+                  {cart.length}
+                </Text>
               </View>
               <Icon name="cart" size={20} color="#333" />
             </TouchableOpacity>
@@ -223,7 +229,7 @@ export default function HomeScreen({ navigation }) {
               marginBottom: 12,
             }}
           >
-            <Text style={Appstyles.NearYou}>Most Popular</Text>
+            <Text style={Appstyles.NearYou}>Suggest for you</Text>
             <TouchableOpacity>
               <Text
                 style={{
@@ -238,7 +244,13 @@ export default function HomeScreen({ navigation }) {
           </View>
 
           {listFood.map((val) => {
-            return <CardFood item={val} navigation={navigation} />;
+            return (
+              <CardFood
+                item={val}
+                navigation={navigation}
+                key={Math.random()}
+              />
+            );
           })}
           <TouchableOpacity>
             <Button

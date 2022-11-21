@@ -1,17 +1,18 @@
-import { SET_PHONE } from "./Actions";
-import { phones } from "../data/imageData";
+import { SET_CART } from "./Actions";
+
 //innite state
 const initState = {
   foodChoise: null,
+  cart: [],
 };
 
 //depatch
 const Reducer = (state, action) => {
   switch (action.type) {
-    case SET_PHONE:
+    case SET_CART:
       return {
         ...state,
-        phone: action.payload,
+        cart: action.payload,
       };
   }
 };

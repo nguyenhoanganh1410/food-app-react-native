@@ -1,22 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 import coffe from "../../../images/salads-removebg-preview.png";
-export default function CardItem() {
+export default function CardItem({ item }) {
   return (
     <View style={styles.container}>
-      <Image style={styles.tinyLogo} source={coffe} />
+      <Image style={styles.tinyLogo} source={{ uri: item.image }} />
       <View style={styles.content}>
-        <Text style={{ fontSize: 18, fontWeight: "500" }}>
-          Stacbut Hot Coffe
-        </Text>
+        <Text style={{ fontSize: 18, fontWeight: "500" }}>{item.name}</Text>
         <Text style={{ marginVertical: 6 }}>5.0*</Text>
-        <Text style={{ color: "#FF731D", fontWeight: "bold" }}>$20.00</Text>
+        <Text style={{ color: "#FF731D", fontWeight: "bold" }}>
+          {"$" + item.price.toFixed(2)}
+        </Text>
       </View>
       <View style={styles.options}>
         <View style={styles.option}>
           <Text>-</Text>
         </View>
-        <TextInput style={styles.input} value="1" />
+        <TextInput style={styles.input} value={item.quatity.toString()} />
         <View style={styles.option}>
           <Text>+</Text>
         </View>
@@ -70,5 +70,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: "100%",
     resizeMode: "stretch",
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
   },
 });

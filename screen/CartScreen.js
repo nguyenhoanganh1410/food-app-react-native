@@ -16,10 +16,14 @@ import {
   IconButton,
 } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Stack, Button } from "@react-native-material/core";
+import Contex from "../store/Context";
+import { SetCart } from "../store/Actions";
 
 export default function CartScreen({ route, navigation }) {
+  const { state, depatch } = useContext(Contex);
+  const { cart } = state;
   // console.log(route.params.item);
   const { item } = route.params;
   const [quatity, setQuatity] = useState("1");
@@ -32,6 +36,30 @@ export default function CartScreen({ route, navigation }) {
     if (newQuatity > 0) {
       setQuatity(newQuatity.toString());
     }
+  };
+
+  const handleAddToCart = () => {
+    //loc phan tu trung nhau
+    let check = false;
+    const newCart = [...cart];
+
+    for (let i = 0; i < newCart.length; i++) {
+      if (newCart[i].id === item.id) {
+        newCart[i].quatity = +newCart[i].quatity + +quatity;
+        console.log(newCart[i].quatity);
+        check = true;
+        break;
+      }
+    }
+    console.log(newCart)
+    if (check === true) {
+      depatch(SetCart(newCart));
+    } else {
+      depatch(SetCart([...cart, { ...item, quatity }]));
+    }
+
+    //navogation cart
+    navigation.navigate("ViewCartScreen");
   };
   return (
     <View style={styles.container}>
@@ -47,7 +75,7 @@ export default function CartScreen({ route, navigation }) {
             <Icon name="heart" size={24} />
           </TouchableOpacity>
         </View>
-        <Image style={styles.tinyLogo} source={item.image} />
+        <Image style={styles.tinyLogo} source={{ uri: item.image }} />
       </View>
       <View style={Appstyles.bottom}>
         <Text
@@ -105,7 +133,11 @@ export default function CartScreen({ route, navigation }) {
             its padding set by the background image provided by the system, and
           </Text>
         </View>
-        <Button title="Buy Now" style={Appstyles.button} />
+        <Button
+          title="Buy Now"
+          style={Appstyles.button}
+          onPress={() => handleAddToCart()}
+        />
       </View>
     </View>
   );
@@ -116,8 +148,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tinyLogo: {
-    width: 300,
-    height: 200,
+    width: "100%",
+    height: "100%",
     resizeMode: "stretch",
   },
   input: {

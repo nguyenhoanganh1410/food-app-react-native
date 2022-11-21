@@ -7,9 +7,10 @@ import ViewCart from "./screen/ViewCart";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
-
+ import Provider from "./store/Provider";
 export default function App() {
   return (
+     <Provider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -29,6 +30,7 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+     </Provider>
     // <View style={styles.container}>
     //   <CartScreen />
     //   <StatusBar style="auto" />

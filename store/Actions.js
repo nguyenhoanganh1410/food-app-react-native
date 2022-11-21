@@ -1,10 +1,10 @@
 //actions
 
-export const SET_PHONE = "set_Phone";
+export const SET_CART = "set_Cart";
 
-export const SetPhone = (payload) => {
+export const SetCart = (payload) => {
   return {
-    type: SET_PHONE,
+    type: SET_CART,
     payload,
   };
 };

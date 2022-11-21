@@ -18,8 +18,13 @@ import {
 import CardItem from "../component/card/card/CardItem";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import Appstyles from "./CartStyle.scss";
+import Contex from "../store/Context";
+import { useContext } from "react";
 // import RNTextArea from "@freakycoder/react-native-text-area";
 export default function ViewCart({ navigation }) {
+  const { state, depatch } = useContext(Contex);
+  const { cart } = state;
+  //console.log(cart);
   return (
     <View style={styles.container}>
       <View
@@ -46,12 +51,15 @@ export default function ViewCart({ navigation }) {
       </View>
 
       <ScrollView style={styles.scrollView}>
+        {cart.map((val) => {
+          return <CardItem item={val} key={Math.random()} />;
+        })}
+        {/* <CardItem />
         <CardItem />
         <CardItem />
         <CardItem />
         <CardItem />
-        <CardItem />
-        <CardItem />
+        <CardItem /> */}
       </ScrollView>
 
       <View>
