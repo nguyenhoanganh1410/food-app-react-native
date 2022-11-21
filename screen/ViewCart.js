@@ -19,7 +19,7 @@ import CardItem from "../component/card/card/CardItem";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import Appstyles from "./CartStyle.scss";
 // import RNTextArea from "@freakycoder/react-native-text-area";
-export default function ViewCart() {
+export default function ViewCart({ navigation }) {
   return (
     <View style={styles.container}>
       <View
@@ -36,7 +36,7 @@ export default function ViewCart() {
       >
         <TouchableOpacity
           style={Appstyles.top_icon}
-          //onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("Home")}
         >
           <Icon name="home" size={24} />
         </TouchableOpacity>

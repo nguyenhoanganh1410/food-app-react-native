@@ -238,7 +238,7 @@ export default function HomeScreen({ navigation }) {
           </View>
 
           {listFood.map((val) => {
-            return <CardFood item={val} />;
+            return <CardFood item={val} navigation={navigation} />;
           })}
           <TouchableOpacity>
             <Button

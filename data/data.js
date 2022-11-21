@@ -28,58 +28,34 @@ export const categories = [
 export const dataFood = [
   {
     id: "vmfkvmfkvmfkv",
-    name: "snacks",
-    image: ham,
+    name: "he-gramercy-tavern-burger-4-pack",
+    image:
+      "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/137148/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-15.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
     postision: "3km",
-    price: "5",
+    price: 3,
   },
   {
-    id: "cnnvkfjvkjfnfd",
-    name: "pizza",
-    image: pizza,
-    position: "3km",
-    price: "5",
-  },
-  {
-    id: "vmfkvmfkkv",
-    name: "snacks",
-    image: ham,
+    id: "vmfkvmfklvmfkv",
+    name: "gramercy-tavern",
+    image:
+      "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/132933/gotts-complete-cheeseburger-kit-for-4.7bdc74104b193427b3fe6eae39e05b5e.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
     postision: "3km",
-    price: "5",
+    price: 3,
   },
   {
-    id: "cnnvkfjvkjfnfdcmm",
-    name: "pizza",
-    image: pizza,
-    position: "3km",
-    price: "5",
-  },
-  {
-    id: "vmfkvmfkvmfsmxalkv",
-    name: "snacks",
-    image: ham,
+    id: "vmfkvmfklvmfvlllmfkv",
+    name: "ott's Roadside",
+    image:
+      "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/131436/le-big-matt-kit-for-6.1ddae6e382bb3218eeb0fd5247de115a.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
     postision: "3km",
-    price: "5",
+    price: 8,
   },
   {
-    id: "cnnvkfjvkjf,as,cmdnfd",
-    name: "pizza",
-    image: pizza,
-    position: "3km",
-    price: "5",
-  },
-  {
-    id: "vmfkvmfkvmcm,dmcfkv",
-    name: "snacks",
-    image: ham,
+    id: "vmfkvmfklvmvfvmfvlllmfkv",
+    name: "Peter Luger Steak House",
+    image:
+      "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/133009/usda-prime-burgers-pack-of-18-8oz-each.274c67f15aa1c0b210dbf51801706670.png?ixlib=react-9.0.2&auto=format&ar=1%3A1",
     postision: "3km",
-    price: "5",
-  },
-  {
-    id: "cnnvkfjvkmc,dmcjfnfd",
-    name: "pizza",
-    image: pizza,
-    position: "3km",
-    price: "5",
+    price: 8,
   },
 ];
