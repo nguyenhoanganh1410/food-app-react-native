@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import coffe from "../images/c-removebg-preview.png";
+import coffe from "../images/ham.png";
 import Appstyles from "./CartStyle.scss";
 import {
   Backdrop,
@@ -19,7 +19,9 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { useState } from "react";
 import { Stack, Button } from "@react-native-material/core";
 
-export default function CartScreen() {
+export default function CartScreen({ route, navigation }) {
+  // console.log(route.params.item);
+  const { item } = route.params;
   const [quatity, setQuatity] = useState("1");
   const handlePluss = () => {
     const newQuatity = +quatity + 1;
@@ -35,22 +37,32 @@ export default function CartScreen() {
     <View style={styles.container}>
       <View style={Appstyles.top}>
         <View style={Appstyles.top_icons}>
-          <TouchableOpacity style={Appstyles.top_icon}>
+          <TouchableOpacity
+            style={Appstyles.top_icon}
+            onPress={() => navigation.navigate("Home")}
+          >
             <Icon name="home" size={24} />
           </TouchableOpacity>
           <TouchableOpacity style={Appstyles.top_icon}>
             <Icon name="heart" size={24} />
           </TouchableOpacity>
         </View>
-        <Image style={styles.tinyLogo} source={coffe} />
+        <Image style={styles.tinyLogo} source={item.image} />
       </View>
       <View style={Appstyles.bottom}>
-        <Text style={{ fontSize: 32, color: "#444444", fontWeight: "700" }}>
-          Poited Plants
+        <Text
+          style={{
+            fontSize: 32,
+            color: "#444444",
+            fontWeight: "700",
+            textTransform: "capitalize",
+          }}
+        >
+          {item?.name}
         </Text>
         <View style={{ flexDirection: "row", marginVertical: 12 }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Icon name="star" size={24} color="green" />
+            <Icon name="star" size={24} color="#FE5F55" />
             <Text style={{ marginLeft: 8 }}>4.0 Rating</Text>
           </View>
           <View
@@ -60,7 +72,7 @@ export default function CartScreen() {
               alignItems: "center",
             }}
           >
-            <Icon name="comment" size={24} color="green" />
+            <Icon name="comment" size={22} color="#FE5F55" />
             <Text style={{ marginLeft: 8 }}>20 Comments</Text>
           </View>
         </View>
@@ -81,7 +93,7 @@ export default function CartScreen() {
               <Text>+</Text>
             </TouchableOpacity>
           </View>
-          <Text style={Appstyles.price}>{`$${20 * +quatity}`}</Text>
+          <Text style={Appstyles.price}>{`$${item.price * +quatity}`}</Text>
         </View>
 
         <View style={Appstyles.about}>
@@ -91,10 +103,6 @@ export default function CartScreen() {
           <Text style={Appstyles.text}>
             Has by default a border at the bottom of its view. This border has
             its padding set by the background image provided by the system, and
-            it cannot be changed. Solutions to avoid this are to either not set
-            height explicitly, in which case the system will take care of
-            displaying the border in the correct position, or to not display the
-            border by setting underlineColorAndroid to transparent.
           </Text>
         </View>
         <Button title="Buy Now" style={Appstyles.button} />
@@ -108,8 +116,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tinyLogo: {
-    width: 200,
+    width: 300,
     height: 200,
+    resizeMode: "stretch",
   },
   input: {
     fontSize: 14,
