@@ -27,7 +27,10 @@ export default function StartScreen() {
     { img: cake3, title: " Tikka masala", price: 25, time: "2 days ago" },
     { img: cake4, title: " Tandoori", price: 10, time: "3 days ago" },
     { img: cake5, title: " Goulash", price: 15, time: "3 days ago" },
-    { img: cake6, title: " Goulash Tandeji", price: 22, time: "3 days ago" },
+    { img: cake6, title: " Goul Tandeji", price: 24, time: "3 days ago" },
+    { img: cake6, title: " Goulash Tandeji", price: 20, time: "3 days ago" },
+    { img: cake6, title: " Goulash Tandeji", price: 28, time: "3 days ago" },
+    { img: cake6, title: " Goulash Tandeji", price: 26, time: "3 days ago" },
   ];
   // const [panel, setPanle] = useState(ArrayImg[0]);
   const [index, setIndex] = useState(1);
@@ -35,6 +38,9 @@ export default function StartScreen() {
 
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 20, fontWeight: "bold", margin: 10 }}>
+        My History
+      </Text>
       <View style={styles.viewBody}>
         <FlatList data={data} renderItem={renderItem} />
       </View>
@@ -47,10 +53,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     flexDirection: "column",
+    backgroundColor: "#F8F8F9",
   },
   viewBody: {
-    backgroundColor: "#E3FAF4",
-    height: 500,
+    backgroundColor: "#F8F8F9",
+    height: 700,
     //justifyContent: "center",
     alignItems: "center",
   },
