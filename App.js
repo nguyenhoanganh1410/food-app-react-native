@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import StartScreen from "./screen/StartScreen";
 import HistoryScreen from "./screen/HistoryScreen";
+import Profile from "./screen/Profile";
+import Delivery from "./screen/Delivery";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
