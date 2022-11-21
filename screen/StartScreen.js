@@ -17,7 +17,7 @@ import logo from "../images/logo.png";
 import shipper from "../images/shipper.png";
 import eatfood from "../images/eatfood.png";
 
-export default function StartScreen() {
+export default function StartScreen({ navigation }) {
   var ArrayImg = [
     { img: tree, title: " Select Food Item" },
     { img: shipper, title: "Hot Delivery to Home" },
@@ -34,7 +34,8 @@ export default function StartScreen() {
 
       console.log(index);
     } else {
-      setIndex(0);
+      navigation.navigate("HistoryScreen");
+      // setIndex(0);
     }
   }
   return (
