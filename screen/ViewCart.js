@@ -19,12 +19,22 @@ import CardItem from "../component/card/card/CardItem";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import Appstyles from "./CartStyle.scss";
 import Contex from "../store/Context";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 // import RNTextArea from "@freakycoder/react-native-text-area";
 export default function ViewCart({ navigation }) {
   const { state, depatch } = useContext(Contex);
   const { cart } = state;
+
+  const [total, setTotal] = useState(0);
   //console.log(cart);
+  useEffect(() => {
+    //total price
+    const sum = cart.reduce((total, val) => {
+      return total + +val.price * +val.quatity;
+    }, 0);
+
+    setTotal(sum);
+  }, [cart]);
   return (
     <View style={styles.container}>
       <View
@@ -86,7 +96,7 @@ export default function ViewCart({ navigation }) {
           </View>
           <Text style={{ fontSize: 20, fontWeight: "600", color: "red" }}>
             {" "}
-            $40
+            {"$" + total}
           </Text>
         </View>
         <TouchableOpacity>

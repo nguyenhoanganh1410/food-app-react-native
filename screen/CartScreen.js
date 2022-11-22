@@ -16,7 +16,7 @@ import {
   IconButton,
 } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Stack, Button } from "@react-native-material/core";
 import Contex from "../store/Context";
 import { SetCart } from "../store/Actions";
@@ -24,6 +24,10 @@ import { SetCart } from "../store/Actions";
 export default function CartScreen({ route, navigation }) {
   const { state, depatch } = useContext(Contex);
   const { cart } = state;
+
+  console.log(cart);
+
+  
   // console.log(route.params.item);
   const { item } = route.params;
   const [quatity, setQuatity] = useState("1");
@@ -51,7 +55,7 @@ export default function CartScreen({ route, navigation }) {
         break;
       }
     }
-    console.log(newCart)
+    console.log(newCart);
     if (check === true) {
       depatch(SetCart(newCart));
     } else {
@@ -61,6 +65,9 @@ export default function CartScreen({ route, navigation }) {
     //navogation cart
     navigation.navigate("ViewCartScreen");
   };
+
+ 
+
   return (
     <View style={styles.container}>
       <View style={Appstyles.top}>
