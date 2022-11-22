@@ -1,0 +1,60 @@
+.appBar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+   // background-color: red;
+}
+
+.padding{
+    padding: 0 12px;
+}
+
+.appBarText{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.titleContent{
+   // padding: 12px 0;
+   padding: 12px 0;
+
+}
+.titleContent_text{
+    font-weight: 600;
+    font-size: 24;
+    margin: 12px 0;
+}
+.input{
+    border-radius:10px;
+}
+.inputSearch{
+    font-size: 10px;
+}
+.category{
+    margin: 12px 0;
+    margin-top:24px;
+    font-size: 18px;
+    
+}
+.NearYou{
+    margin: 12px 0;
+    margin-top:24px;
+    font-size: 18px;
+}
+
+.CategoryText{
+    font-size: 20px;
+    font-weight: 500;
+    //margin-bottom: 12px;
+}
+
+.text{
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+.active{
+    font-size: 16px;
+    font-weight: 500;
+}
