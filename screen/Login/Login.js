@@ -6,11 +6,43 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Entypo } from "@expo/vector-icons";
 import fastfood from "../../images/fastfood.png";
+
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { firebaseConfig } from "../../firebaseConfig";
+import { initializeApp } from "firebase/app";
+
 export default function Login({ navigation }) {
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    //navigation.navigate("Home");
+    console.log(email);
+    console.log(password);
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        console.log(user);
+        navigation.navigate("Home");
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        Alert.alert("email or password is not correct");
+      });
+  };
+
   return (
     <View style={styles.AndroidSafeArea}>
       <View style={styles.container}>
@@ -35,7 +67,8 @@ export default function Login({ navigation }) {
               <TextInput
                 style={{ paddingLeft: 10 }}
                 placeholder="Email"
-              ></TextInput>
+                onChangeText={(text) => setEmail(text)}
+              />
             </View>
 
             {/* password */}
@@ -43,7 +76,8 @@ export default function Login({ navigation }) {
               <TextInput
                 style={{ paddingLeft: 10 }}
                 placeholder="Password"
-              ></TextInput>
+                onChangeText={(text) => setPassword(text)}
+              />
 
               {/* <TouchableOpacity
                 onPress={() => {
@@ -72,9 +106,7 @@ export default function Login({ navigation }) {
             <View>
               <TouchableOpacity
                 style={styles.btn}
-                onPress={() => {
-                  navigation.navigate("Home");
-                }}
+                onPress={() => handleLogin()}
               >
                 <Text>Login</Text>
               </TouchableOpacity>
@@ -150,7 +182,7 @@ const styles = StyleSheet.create({
   },
   viewInput: {
     height: 50,
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: "gray",
     justifyContent: "center",
     borderRadius: 5,
