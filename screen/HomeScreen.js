@@ -46,6 +46,9 @@ export default function HomeScreen({ navigation }) {
     <CardComponent item={item} navigation={navigation} />
   );
 
+  const handleOnpress = () => {
+    navigation.navigate("Profile");
+  };
   useEffect(() => {
     setListFood(dataFood);
   }, []);
@@ -107,9 +110,11 @@ export default function HomeScreen({ navigation }) {
               </View>
               <Icon name="cart" size={20} color="#333" />
             </TouchableOpacity>
-            <Avatar
-              image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
-            />
+            <TouchableOpacity onPress={handleOnpress}>
+              <Avatar
+                image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
+              />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={Appstyles.titleContent}>

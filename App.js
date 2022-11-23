@@ -20,15 +20,15 @@ export default function App() {
   return (
     <Provider>
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{ headerShown: false }}
-          initialRouteName="Login"
-        >
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Start" component={StartScreen} />
+
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="AddToCart" component={CartScreen} />
           <Stack.Screen name="ViewCartScreen" component={ViewCart} />
-          <Stack.Screen name="Start" component={StartScreen} />
+          <Stack.Screen name="Delivery" component={Delivery} />
           <Stack.Screen name="HistoryScreen" component={HistoryScreen} />
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Recover" component={Recover} />

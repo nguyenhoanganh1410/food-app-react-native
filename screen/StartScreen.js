@@ -34,7 +34,7 @@ export default function StartScreen({ navigation }) {
 
       console.log(index);
     } else {
-      navigation.navigate("HistoryScreen");
+      navigation.navigate("Login");
       // setIndex(0);
     }
   }

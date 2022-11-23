@@ -26,6 +26,10 @@ export default function ViewCart({ navigation }) {
   const { cart } = state;
 
   const [total, setTotal] = useState(0);
+
+  const handlePress = () => {
+    navigation.navigate("Delivery");
+  };
   //console.log(cart);
   useEffect(() => {
     //total price
@@ -99,7 +103,7 @@ export default function ViewCart({ navigation }) {
             {"$" + total}
           </Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handlePress()}>
           <Button
             style={{
               paddingVertical: 8,

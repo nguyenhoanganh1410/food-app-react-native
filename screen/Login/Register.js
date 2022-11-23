@@ -105,19 +105,22 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    //  backgroundColor: "red",
     alignItems: "center",
+    justifyContent: "center",
   },
   header: {
     justifyContent: "center",
     height: 50,
     width: "100%",
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   headerBack: {
     marginLeft: 18,
+    marginTop: 100,
     height: 40,
     width: 40,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
@@ -125,6 +128,7 @@ const styles = StyleSheet.create({
 
   body: {
     flex: 1,
+    marginTop: 40,
     width: "90%",
     justifyContent: "center",
   },
@@ -132,7 +136,7 @@ const styles = StyleSheet.create({
   viewInput: {
     height: 50,
     marginBottom: 15,
-    backgroundColor: "gray",
+    backgroundColor: "#F9F9F9",
     justifyContent: "center",
     borderRadius: 5,
   },
