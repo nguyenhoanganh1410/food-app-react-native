@@ -38,7 +38,9 @@ const Item = ({ title }) => (
 );
 export default function HomeScreen({ navigation }) {
   const { state, depatch } = useContext(Contex);
-  const { cart } = state;
+  const { cart, userLogin } = state;
+
+  console.log(userLogin);
 
   const [listFood, setListFood] = useState([]);
   const renderItem = ({ item }) => <CategoryCard item={item} />;
@@ -118,7 +120,9 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
         <View style={Appstyles.titleContent}>
-          <Text style={Appstyles.titleContent_text}>Hello Hoang Anh!</Text>
+          <Text style={Appstyles.titleContent_text}>
+            Hello {userLogin?.displayName}!
+          </Text>
         </View>
 
         <Text style={Appstyles.text}>Find & Restaurent in your city</Text>

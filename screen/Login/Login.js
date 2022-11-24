@@ -8,15 +8,19 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Entypo } from "@expo/vector-icons";
 import fastfood from "../../images/fastfood.png";
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseConfig } from "../../firebaseConfig";
 import { initializeApp } from "firebase/app";
+import Contex from "../../store/Context";
+import { SetUserLogin } from "../../store/Actions";
 
 export default function Login({ navigation }) {
+  const { state, depatch } = useContext(Contex);
+  const { userLogin } = state;
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
@@ -32,7 +36,9 @@ export default function Login({ navigation }) {
       .then((userCredential) => {
         // Signed in
         var user = userCredential.user;
-        console.log(user);
+        depatch(SetUserLogin(userCredential.user.providerData[0]));
+
+        console.log(userCredential.user.providerData[0]);
         navigation.navigate("Home");
         // ...
       })

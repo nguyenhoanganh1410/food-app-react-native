@@ -7,12 +7,68 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import fastfood from "../../images/fastfood.png";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+
+import { firebaseConfig } from "../../firebaseConfig";
+import { initializeApp } from "firebase/app";
+import Contex from "../../store/Context";
+import { SetUserLogin } from "../../store/Actions";
 
 export default function Register({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [repassword, setRepassword] = useState("");
+  const { state, depatch } = useContext(Contex);
+  const { userLogin } = state;
+
+  const register = () => {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    var regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    if (!email.match(regex)) {
+      Alert.alert("Email invalidate");
+      return;
+    }
+    //check data
+    if (name.length === 0) {
+      Alert.alert("Name is not empty");
+      return;
+    } else if (password !== repassword) {
+      Alert.alert("The password must be same");
+      return;
+    }
+
+    //firebase in here
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        updateProfile(auth.currentUser, { displayName: name }).catch((err) =>
+          console.log(err)
+        );
+        depatch(SetUserLogin(userCredential.user.providerData[0]));
+
+        Alert.alert("register sucessfully!!");
+        navigation.navigate("Home");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Alert.alert(errorMessage);
+        // ..
+      });
+  };
   return (
     <View style={styles.AndroidSafeArea}>
       <View style={styles.container}>
@@ -51,6 +107,7 @@ export default function Register({ navigation }) {
             <TextInput
               style={{ paddingLeft: 10 }}
               placeholder="Name"
+              onChangeText={(text) => setName(text)}
             ></TextInput>
           </View>
 
@@ -83,6 +140,7 @@ export default function Register({ navigation }) {
             <TextInput
               style={{ paddingLeft: 10 }}
               placeholder="Email"
+              onChangeText={(text) => setEmail(text)}
             ></TextInput>
           </View>
 
@@ -90,7 +148,9 @@ export default function Register({ navigation }) {
           <View style={styles.viewInput}>
             <TextInput
               style={{ paddingLeft: 10 }}
+              secureTextEntry={true}
               placeholder="Password"
+              onChangeText={(text) => setPassword(text)}
             ></TextInput>
           </View>
 
@@ -98,13 +158,15 @@ export default function Register({ navigation }) {
           <View style={styles.viewInput}>
             <TextInput
               style={{ paddingLeft: 10 }}
+              secureTextEntry={true}
               placeholder="Password"
+              onChangeText={(text) => setRepassword(text)}
             ></TextInput>
           </View>
 
           {/* btn login */}
           <View style={styles.btnView}>
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn} onPress={() => register()}>
               <Text>Register</Text>
             </TouchableOpacity>
           </View>
